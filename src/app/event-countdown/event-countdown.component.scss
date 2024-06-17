@@ -1,0 +1,64 @@
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+
+  .countdown-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 65px;
+    width: 100%;
+
+    .event-name {
+      font-weight: 800;
+      color: #72035D;
+      margin-bottom: 65px;
+    }
+
+    .countdown {
+      color: #000;
+    }
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 70%;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      .field-container {
+        display: flex;
+        flex-direction: row;
+
+        @media (orientation: portrait) {
+          flex-direction: column;
+        }
+      }
+
+      mat-form-field {
+        width: 100%;
+        font-size: 14px;
+
+        &:first-child {
+          margin-right: 15px;
+        }
+      }
+
+      button {
+        margin-top: 20px;
+        background-color: #72035D; // Custom primary color
+        color: white;
+        border-radius: 26px;
+      }
+    }
+  }
+}

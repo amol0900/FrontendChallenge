@@ -1,0 +1,22 @@
+<div class="content-wrapper">
+  <div class="countdown-container">
+    <div class="event-name" appFitText [maxFontSize]="67" [minFontSize]="10">Time to {{ eventName }}</div>
+    <div class="countdown" appFitText [maxFontSize]="74" [minFontSize]="10">{{ remainingTime }}</div>
+  </div>
+  <div class="form-container">
+    <form (ngSubmit)="saveEvent()">
+      <div class="field-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Title</mat-label>
+          <input matInput type="text" id="event-name" [(ngModel)]="eventName" name="eventName"
+            (keydown.enter)="saveEvent()">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Date</mat-label>
+          <input matInput type="date" id="end-date" [(ngModel)]="endDate" name="endDate" (keydown.enter)="saveEvent()">
+        </mat-form-field>
+      </div>
+      <button mat-raised-button type="submit">Save</button>
+    </form>
+  </div>
+</div>
