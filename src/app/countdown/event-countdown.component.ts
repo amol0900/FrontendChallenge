@@ -4,6 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 import { FitTextDirective } from '../directives/fit-text.directive';
 
 @Component({
@@ -12,6 +13,7 @@ import { FitTextDirective } from '../directives/fit-text.directive';
   templateUrl: './event-countdown.component.html',
   styleUrls: ['./event-countdown.component.scss'],
   imports: [
+    CommonModule,
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
@@ -30,7 +32,7 @@ export class EventCountdownComponent implements OnInit {
   }
 
   loadEvent() {
-    this.eventName = localStorage.getItem('eventName') || 'Event';
+    this.eventName = localStorage.getItem('eventName') || '';
     const endDateString = localStorage.getItem('endDate');
     if (endDateString) {
       this.endDate = endDateString.split('T')[0];
@@ -51,11 +53,11 @@ export class EventCountdownComponent implements OnInit {
 
     const now = new Date();
     const endDate = new Date(this.endDate);
-    endDate.setHours(0, 0, 0, 0); // Ensure the time is set to the start of the day
+    endDate.setHours(0, 0, 0, 0);
     const duration = intervalToDuration({ start: now, end: endDate });
 
     if (endDate.getTime() < now.getTime()) {
-      this.remainingTime = 'Event has ended';
+      this.remainingTime = 'Event has passed';
       return;
     }
 
@@ -63,7 +65,7 @@ export class EventCountdownComponent implements OnInit {
   }
 
   formatDuration(duration: Duration): string {
-    const parts = [];
+    const parts: string[] = [];
     if (duration.days) parts.push(`${duration.days} days`);
     if (duration.hours) parts.push(`${duration.hours} h`);
     if (duration.minutes) parts.push(`${duration.minutes} m`);

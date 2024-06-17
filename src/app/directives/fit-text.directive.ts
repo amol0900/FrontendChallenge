@@ -26,8 +26,6 @@ export class FitTextDirective implements AfterViewInit {
 
     this.renderer.setStyle(element, 'font-size', `${fontSize}px`);
     this.renderer.setStyle(element, 'white-space', 'nowrap'); // Ensure no line breaks
-    this.renderer.setStyle(element, 'width', '100%'); // Ensure it takes the full width
-    this.renderer.setStyle(element, 'text-align', 'center'); // Center align text
 
     while (element.scrollWidth > parentWidth && fontSize > this.minFontSize) {
       fontSize -= 1;
