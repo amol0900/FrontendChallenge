@@ -25,7 +25,7 @@ export class FitTextDirective implements AfterViewInit {
     let fontSize = this.maxFontSize;
 
     this.renderer.setStyle(element, 'font-size', `${fontSize}px`);
-    this.renderer.setStyle(element, 'white-space', 'nowrap'); // Ensure no line breaks
+    this.renderer.setStyle(element, 'white-space', 'nowrap');
 
     while (element.scrollWidth > parentWidth && fontSize > this.minFontSize) {
       fontSize -= 1;

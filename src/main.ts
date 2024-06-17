@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EventCountdownComponent } from './app/countdown/event-countdown.component'; // Corrected path
+import { EventCountdownComponent } from './app/event-countdown/event-countdown.component';
 import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, {

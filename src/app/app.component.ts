@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { EventCountdownComponent } from './countdown/event-countdown.component';
+import { EventCountdownComponent } from './event-countdown/event-countdown.component';
 
 @Component({
   selector: 'app-root',
