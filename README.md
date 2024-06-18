@@ -48,5 +48,5 @@ To make this app production-ready, I would:
 - Ensure the app meets accessibility standards (WCAG).
 - Perform cross-browser compatibility testing to ensure consistent performance across different browsers.
 - Add additional features to enhance user engagement, such as timezone support, notifications/reminders, and the ability to manage multiple countdowns.
-- Review and improve the user experience (UX), potentially adding buttons for actions like save and clear.
+- Review and improve the user experience (UX), potentially adding buttons for actions like save and clear, adding a date picker.
 
