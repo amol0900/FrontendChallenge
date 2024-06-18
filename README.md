@@ -22,8 +22,7 @@ This is an Angular application that allows users to set an event name and date, 
 
 ```sh
 git clone https://github.com/amol0900/FrontendChallenge.git
-cd event-countdown-timer
-cd event-countdown-timer
+cd FrontendChallenge
 ```
 
 ### 2. Install Dependencies
