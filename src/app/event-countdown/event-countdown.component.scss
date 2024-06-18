@@ -61,16 +61,29 @@
           margin-right: 15px;
         }
 
-        ::ng-deep .mdc-text-field--focused .mdc-notched-outline > * {
-          border-color: #72035D;
-        }
-      }
+        ::ng-deep {
+          .mat-form-field .mat-form-field-infix input {
+            line-height: 17px;
+          }
+          .mdc-text-field__input {
+            height: 17px;
+          }
+          .mdc-text-field--focused {
+            .mdc-floating-label {
+              color: #72035D;
+            }
 
-      button {
-        margin-top: 20px;
-        background-color: #72035D;
-        color: white;
-        border-radius: 26px;
+            .mdc-notched-outline__leading,
+            .mdc-notched-outline__trailing,
+            .mdc-notched-outline__notch {
+              border-color: #72035D;
+            }
+
+            .mdc-notched-outline__notch {
+              border-left: none;
+            }
+          }
+        }
       }
     }
   }

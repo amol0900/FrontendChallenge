@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { intervalToDuration, Duration } from 'date-fns';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -21,14 +21,19 @@ import { FitTextDirective } from '../directives/fit-text.directive';
     FitTextDirective,
   ]
 })
-export class EventCountdownComponent implements OnInit {
+export class EventCountdownComponent implements OnInit, OnDestroy {
   eventName: string = '';
   endDate: string = '';
   remainingTime: string = '';
+  private intervalId: any;
 
   ngOnInit() {
     this.loadEvent();
-    setInterval(() => this.updateCountdown(), 1000);
+    this.intervalId = setInterval(() => this.updateCountdown(), 1000);
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.intervalId);
   }
 
   loadEvent() {
@@ -39,7 +44,7 @@ export class EventCountdownComponent implements OnInit {
     }
   }
 
-  saveEvent() {
+  onInputChange() {
     localStorage.setItem('eventName', this.eventName);
     localStorage.setItem('endDate', this.endDate);
     this.updateCountdown();
@@ -53,7 +58,9 @@ export class EventCountdownComponent implements OnInit {
 
     const now = new Date();
     const endDate = new Date(this.endDate);
-    endDate.setHours(0, 0, 0, 0);
+
+    endDate.setHours(23, 59, 59, 999);
+
     const duration = intervalToDuration({ start: now, end: endDate });
 
     if (endDate.getTime() < now.getTime()) {
@@ -65,11 +72,19 @@ export class EventCountdownComponent implements OnInit {
   }
 
   formatDuration(duration: Duration): string {
-    const parts: string[] = [];
-    if (duration.days) parts.push(`${duration.days} days`);
-    if (duration.hours) parts.push(`${duration.hours} h`);
-    if (duration.minutes) parts.push(`${duration.minutes} m`);
-    if (duration.seconds) parts.push(`${duration.seconds} s`);
-    return parts.join(', ');
+    const days = duration.days ?? 0;
+    const hours = duration.hours ?? 0;
+    const minutes = duration.minutes ?? 0;
+    const seconds = duration.seconds ?? 0;
+
+    const totalDays = days + (duration.months ?? 0) * 30 + (duration.years ?? 0) * 365;
+
+    const timeSegments: string[] = [];
+    if (totalDays) timeSegments.push(`${totalDays} days`);
+    if (hours) timeSegments.push(`${hours} h`);
+    if (minutes) timeSegments.push(`${minutes} m`);
+    if (seconds) timeSegments.push(`${seconds} s`);
+
+    return timeSegments.join(', ');
   }
 }
