@@ -15,6 +15,7 @@ This is an Angular application that allows users to set an event name and date, 
 - Node.js (>=14.x)
 - npm (>=6.x)
 - Angular CLI (>=13.x)
+- `date-fns` library for date manipulation
 
 ## Setup Instructions
 
@@ -30,7 +31,13 @@ cd FrontendChallenge
 npm install
 ```
 
-### 3. Start the development server
+### 3. Install date-fns
+The project depends on the date-fns library for date manipulation. Install it using npm:
+```sh
+npm install date-fns
+```
+
+### 4. Start the development server
 ```sh
 ng serve
 ```
